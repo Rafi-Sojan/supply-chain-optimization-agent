@@ -1,0 +1,2 @@
+supplier_id,supplier_name,product_id,unit_cost,lead_time_days,reliability_score,capacity,quality_score,past_delay_rate
+BREWERY_SUPPLIER,Boutique Brewery,BEER_CRATE,11,2,96,5000,98,2

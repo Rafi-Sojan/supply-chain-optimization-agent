@@ -1,0 +1,10 @@
+warehouse_id,product_id,on_hand,reserved
+W1,P1,520,40
+W1,P2,360,25
+W1,P3,280,20
+W2,P1,420,50
+W2,P2,470,30
+W2,P3,240,10
+W3,P1,300,30
+W3,P2,310,20
+W3,P3,380,35

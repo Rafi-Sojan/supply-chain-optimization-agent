@@ -1,0 +1,3 @@
+warehouse_id,warehouse_name,region,storage_capacity
+A,Warehouse A,Brewery North,1000
+B,Warehouse B,Brewery South,4000

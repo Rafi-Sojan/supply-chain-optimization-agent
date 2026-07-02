@@ -1,0 +1,7 @@
+supplier_id,supplier_name,product_id,unit_cost,lead_time_days,reliability_score,capacity,quality_score,past_delay_rate
+S1,Northstar Components,P1,820,5,94,900,96,4
+S2,Velocity Manufacturing,P1,760,8,86,1200,90,12
+S3,Prime Peripheral Supply,P2,1320,6,91,700,95,6
+S4,Atlas Electronics,P2,1260,9,82,1100,88,18
+S5,Nimbus Devices,P3,1880,7,89,650,92,9
+S6,CoreLink Systems,P3,1990,4,96,500,97,3

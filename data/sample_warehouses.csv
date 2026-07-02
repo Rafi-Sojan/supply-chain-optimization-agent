@@ -1,0 +1,4 @@
+warehouse_id,warehouse_name,region,storage_capacity
+W1,Bengaluru Fulfillment Hub,South,3000
+W2,Mumbai Distribution Center,West,2600
+W3,Delhi Regional Warehouse,North,2400
