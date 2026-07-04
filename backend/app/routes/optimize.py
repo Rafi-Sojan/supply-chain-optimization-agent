@@ -18,6 +18,8 @@ def warehouse_allocation(request: OptimizationRequest) -> dict:
         demand_multiplier=request.demand_multiplier,
         fuel_cost_multiplier=request.fuel_cost_multiplier,
         disabled_warehouses=request.disabled_warehouses,
+        use_route_costs=request.use_route_costs,
+        route_algorithm=request.route_algorithm,
     )
     RUN_HISTORY.append(
         {

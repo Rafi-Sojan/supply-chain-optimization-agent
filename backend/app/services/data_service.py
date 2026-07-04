@@ -26,6 +26,11 @@ DATASET_FILES = {
     "shipping_costs": ("shipping_costs.csv", "sample_shipping_costs.csv"),
 }
 
+OPTIONAL_DATASET_FILES = {
+    "road_nodes": ("road_nodes.csv", "sample_road_nodes.csv"),
+    "road_edges": ("road_edges.csv", "sample_road_edges.csv"),
+}
+
 STRING_COLUMNS = {
     "product_id",
     "product_name",
@@ -38,6 +43,7 @@ STRING_COLUMNS = {
     "customer_name",
     "region",
     "period",
+    "node_id",
 }
 
 REQUIRED_COLUMNS = {
@@ -65,6 +71,8 @@ REQUIRED_COLUMNS = {
         "distance_km",
         "delivery_time_days",
     },
+    "road_nodes": {"node_id", "name", "latitude", "longitude"},
+    "road_edges": {"from_node", "to_node", "distance_km", "cost_per_km"},
 }
 
 
@@ -109,6 +117,7 @@ def load_dataset(use_real_data: bool | None = None) -> dict[str, list[dict[str, 
     if missing_files:
         raise ValueError("Missing dataset files: " + ", ".join(missing_files))
     dataset = {name: read_csv(_path_for(name, real_data)) for name in DATASET_FILES}
+    dataset.update(_load_optional_dataset(real_data))
     errors = validate_dataset(dataset)
     if errors:
         source = "real data/raw CSVs" if real_data else "sample CSVs"
@@ -129,6 +138,17 @@ def dataset_status() -> dict[str, Any]:
             "sample_file": str(sample_path),
             "active_file": str(active_path),
             "exists": active_path.exists(),
+        }
+    for dataset_name, (real_name, sample_name) in OPTIONAL_DATASET_FILES.items():
+        real_path = RAW_DATA_DIR / real_name
+        sample_path = DATA_DIR / sample_name
+        active_path = real_path if real_data and real_path.exists() else sample_path
+        files[dataset_name] = {
+            "expected_real_file": str(real_path),
+            "sample_file": str(sample_path),
+            "active_file": str(active_path),
+            "exists": active_path.exists(),
+            "optional": True,
         }
 
     try:
@@ -161,9 +181,21 @@ def _active_metadata() -> dict[str, Any] | None:
     return None
 
 
+def _load_optional_dataset(real_data: bool) -> dict[str, list[dict[str, Any]]]:
+    optional = {}
+    for name, (real_name, sample_name) in OPTIONAL_DATASET_FILES.items():
+        real_path = RAW_DATA_DIR / real_name
+        sample_path = DATA_DIR / sample_name
+        path = real_path if real_data and real_path.exists() else sample_path
+        optional[name] = read_csv(path) if path.exists() else []
+    return optional
+
+
 def validate_dataset(dataset: dict[str, list[dict[str, Any]]]) -> list[str]:
     errors = []
     for name, required in REQUIRED_COLUMNS.items():
+        if name in OPTIONAL_DATASET_FILES and not dataset.get(name):
+            continue
         rows = dataset.get(name, [])
         if not rows:
             errors.append(f"{name} has no rows")
@@ -209,8 +241,12 @@ def validate_dataset(dataset: dict[str, list[dict[str, Any]]]) -> list[str]:
         "inventory": ("on_hand", "reserved"),
         "demand_history": ("demand",),
         "shipping_costs": ("shipping_cost", "distance_km", "delivery_time_days"),
+        "road_nodes": ("latitude", "longitude"),
+        "road_edges": ("distance_km", "cost_per_km"),
     }
     for table_name, columns in numeric_checks.items():
+        if table_name in OPTIONAL_DATASET_FILES and not dataset.get(table_name):
+            continue
         for index, row in enumerate(dataset[table_name], start=1):
             for column in columns:
                 if not isinstance(row[column], int | float):

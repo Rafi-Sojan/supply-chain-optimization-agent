@@ -1,0 +1,15 @@
+from_node,to_node,distance_km,cost_per_km
+A,BAR_1,2,1
+A,BAR_2,4,1
+A,HUB_1,5,1
+A,BAR_5,1,1
+B,BAR_2,1,1
+B,HUB_2,3,1
+B,BAR_4,2,1
+B,BAR_5,3,1
+HUB_1,BAR_3,5,1
+HUB_1,BAR_4,2,1
+HUB_2,BAR_3,3,1
+HUB_2,BAR_4,2,1
+BAR_1,BAR_2,3,1
+BAR_3,BAR_4,2,1

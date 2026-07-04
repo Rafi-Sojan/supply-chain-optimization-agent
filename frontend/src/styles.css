@@ -183,12 +183,29 @@ th {
 }
 
 .result-strip,
-.scenario-form {
+.scenario-form,
+.method-tabs {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
   align-items: center;
   margin-bottom: 16px;
+}
+
+.method-tabs button {
+  border: 1px solid #cfd8e6;
+  border-radius: 8px;
+  padding: 9px 12px;
+  color: #344054;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.method-tabs button.active,
+.method-tabs button:hover {
+  border-color: #2563eb;
+  color: #1d4ed8;
+  background: #eef4ff;
 }
 
 .result-strip {

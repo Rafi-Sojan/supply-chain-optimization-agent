@@ -28,6 +28,10 @@ Optimization Engine
   - OR-Tools solver
   - deterministic fallback
       |
+Route Planning Layer
+  - Dijkstra shortest path
+  - A* heuristic search
+      |
 Scenario Simulation + Recommendation Layer
 ```
 
@@ -37,7 +41,8 @@ Scenario Simulation + Recommendation Layer
 
 Forecasts demand using historical product-region demand records. The current
 implementation favors simple, explainable methods such as linear trend and
-moving average forecasting.
+moving average forecasting, plus scikit-learn Linear Regression and Random
+Forest models, and XGBoost regression with basic backtesting metrics.
 
 ### Inventory Planning
 
@@ -73,6 +78,18 @@ Solves the transportation-style allocation problem:
 
 When demand cannot be fully satisfied, the system reports unmet demand instead
 of hiding the infeasibility.
+
+### Route Planning
+
+Computes shortest delivery paths over a road-network graph. The route layer can
+use Dijkstra for exact non-negative shortest paths or A* when coordinates are
+available for heuristic search. Route distances and route costs can feed the
+warehouse allocation engine as lane costs.
+
+The road network uses optional CSV files:
+
+- `road_nodes.csv`
+- `road_edges.csv`
 
 ### What-if Simulation
 
@@ -129,7 +146,7 @@ validation rules.
 | Backend | FastAPI, Pydantic |
 | Data / ORM | CSV data layer, SQLAlchemy models |
 | Optimization | Google OR-Tools, deterministic fallback |
-| Analytics | pandas, NumPy, scikit-learn-ready service boundaries |
+| Analytics / ML | pandas, NumPy, scikit-learn Linear Regression and Random Forest, XGBoost |
 | Testing | pytest |
 | DevOps | Docker, Docker Compose, GitHub Actions |
 
@@ -174,6 +191,8 @@ README.md
 | `GET` | `/inventory` | Inventory records |
 | `GET` | `/inventory/reorder-plan` | Reorder and risk recommendations |
 | `POST` | `/forecast/demand` | Demand forecasting |
+| `GET` | `/routes/network` | Road-network nodes and edges |
+| `GET` | `/routes/shortest-path` | Dijkstra/A* route between two nodes |
 | `POST` | `/optimize/warehouse-allocation` | Cost-minimizing warehouse allocation |
 | `GET` | `/optimize/runs` | Optimization run history for the current process |
 | `POST` | `/scenarios/run` | What-if scenario simulation |

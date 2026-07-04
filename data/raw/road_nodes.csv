@@ -1,0 +1,10 @@
+node_id,name,latitude,longitude
+A,Warehouse A,12.9716,77.5946
+B,Warehouse B,13.0827,80.2707
+BAR_1,Bar 1,12.9352,77.6245
+BAR_2,Bar 2,13.0358,77.5970
+BAR_3,Bar 3,13.0674,80.2376
+BAR_4,Bar 4,12.9719,79.1580
+BAR_5,Bar 5,12.2958,76.6394
+HUB_1,Central Logistics Hub,12.9719,79.1580
+HUB_2,Coastal Logistics Hub,13.0674,80.2376

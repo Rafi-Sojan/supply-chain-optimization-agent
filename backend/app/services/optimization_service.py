@@ -1,6 +1,8 @@
 from collections import defaultdict
 from copy import deepcopy
 
+from app.services.route_service import build_route_based_shipping_costs
+
 
 def _latest_demand_by_customer(demand_history: list[dict], customers: list[dict], multiplier: float) -> list[dict]:
     region_customer = {row["region"]: row["customer_id"] for row in customers}
@@ -130,13 +132,20 @@ def optimize_warehouse_allocation(
     demand_multiplier: float = 1.0,
     fuel_cost_multiplier: float = 1.0,
     disabled_warehouses: list[str] | None = None,
+    use_route_costs: bool = True,
+    route_algorithm: str = "dijkstra",
 ) -> dict:
     disabled = set(disabled_warehouses or [])
     inventory = [deepcopy(row) for row in dataset["inventory"] if row["warehouse_id"] not in disabled]
     demand_rows = _latest_demand_by_customer(dataset["demand_history"], dataset["customers"], demand_multiplier)
+    shipping_cost_source = (
+        build_route_based_shipping_costs(dataset, route_algorithm)
+        if use_route_costs
+        else dataset["shipping_costs"]
+    )
     costs = [
         {**row, "shipping_cost": float(row["shipping_cost"]) * fuel_cost_multiplier}
-        for row in dataset["shipping_costs"]
+        for row in shipping_cost_source
         if row["warehouse_id"] not in disabled
     ]
 

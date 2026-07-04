@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.database import init_db
-from app.routes import data, forecast, inventory, optimize, products, scenarios, suppliers
+from app.routes import data, forecast, inventory, optimize, products, routes, scenarios, suppliers
 from app.services.data_service import load_dataset
 from app.services.forecasting_service import forecast_demand
 from app.services.inventory_service import build_reorder_plan
@@ -37,6 +37,7 @@ app.include_router(forecast.router)
 app.include_router(optimize.router)
 app.include_router(scenarios.router)
 app.include_router(data.router)
+app.include_router(routes.router)
 
 
 @app.get("/health")

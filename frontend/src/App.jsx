@@ -21,6 +21,7 @@ export default function App() {
   const [activeTab, setActiveTab] = useState("overview");
   const [summary, setSummary] = useState(null);
   const [dataStatus, setDataStatus] = useState(null);
+  const [forecastMethod, setForecastMethod] = useState("random_forest");
   const [forecasts, setForecasts] = useState([]);
   const [reorderPlan, setReorderPlan] = useState([]);
   const [suppliers, setSuppliers] = useState([]);
@@ -34,7 +35,7 @@ export default function App() {
         const [summaryData, dataStatusData, forecastData, reorderData, supplierData, optimizationData] = await Promise.all([
           api.summary(),
           api.dataStatus(),
-          api.forecast(),
+          api.forecast({ horizon_months: 1, method: forecastMethod }),
           api.reorderPlan(),
           api.supplierRanking(),
           api.optimize({ scenario_name: "Base Case" }),
@@ -51,7 +52,7 @@ export default function App() {
     }
 
     loadDashboard();
-  }, []);
+  }, [forecastMethod]);
 
   const runScenario = async (payload) => {
     try {
@@ -63,7 +64,7 @@ export default function App() {
 
   const panels = {
     overview: <Overview summary={summary} dataStatus={dataStatus} />,
-    forecast: <Forecasting forecasts={forecasts} />,
+    forecast: <Forecasting forecasts={forecasts} method={forecastMethod} onMethodChange={setForecastMethod} />,
     inventory: <Inventory reorderPlan={reorderPlan} />,
     suppliers: <Suppliers suppliers={suppliers} />,
     optimization: <Optimization optimization={optimization} />,
