@@ -1,6 +1,41 @@
 customer_id,customer_name,region
-BAR_1,Bar 1,Bar 1
-BAR_2,Bar 2,Bar 2
-BAR_3,Bar 3,Bar 3
-BAR_4,Bar 4,Bar 4
-BAR_5,Bar 5,Bar 5
+CUST_10108,Jose Smith,CUST_10108 - DataCo Customer
+CUST_1011,Mary Smith,CUST_1011 - DataCo Customer
+CUST_10129,Mary Kidd,CUST_10129 - DataCo Customer
+CUST_10591,Deborah Humphrey,CUST_10591 - DataCo Customer
+CUST_11048,Randy Ball,CUST_11048 - DataCo Customer
+CUST_11065,Aaron Smith,CUST_11065 - DataCo Customer
+CUST_12284,Mary Smith,CUST_12284 - DataCo Customer
+CUST_12431,Mary Rios,CUST_12431 - DataCo Customer
+CUST_1492,Gerald Patel,CUST_1492 - DataCo Customer
+CUST_1588,Mary Smith,CUST_1588 - DataCo Customer
+CUST_1657,Betty Phillips,CUST_1657 - DataCo Customer
+CUST_172,Lauren Rush,CUST_172 - DataCo Customer
+CUST_1920,Stephanie Archer,CUST_1920 - DataCo Customer
+CUST_2641,Betty Spears,CUST_2641 - DataCo Customer
+CUST_2723,Mary Brady,CUST_2723 - DataCo Customer
+CUST_341,Mary Smith,CUST_341 - DataCo Customer
+CUST_3710,Ashley Smith,CUST_3710 - DataCo Customer
+CUST_3979,Mary Wagner,CUST_3979 - DataCo Customer
+CUST_4249,Mary Butler,CUST_4249 - DataCo Customer
+CUST_4663,Paul Smith,CUST_4663 - DataCo Customer
+CUST_4812,Nathan Fritz,CUST_4812 - DataCo Customer
+CUST_5004,Dorothy Friedman,CUST_5004 - DataCo Customer
+CUST_5015,Mary Gutierrez,CUST_5015 - DataCo Customer
+CUST_5146,Harry Graves,CUST_5146 - DataCo Customer
+CUST_5654,Jerry Smith,CUST_5654 - DataCo Customer
+CUST_5715,Kelly Smith,CUST_5715 - DataCo Customer
+CUST_5803,Rebecca Stewart,CUST_5803 - DataCo Customer
+CUST_5897,Mary Griffin,CUST_5897 - DataCo Customer
+CUST_6050,Rebecca Arnold,CUST_6050 - DataCo Customer
+CUST_6285,Mary Garcia,CUST_6285 - DataCo Customer
+CUST_6316,Kyle Smith,CUST_6316 - DataCo Customer
+CUST_6615,Mary Meadows,CUST_6615 - DataCo Customer
+CUST_6660,Christine Smith,CUST_6660 - DataCo Customer
+CUST_6696,Mary Spencer,CUST_6696 - DataCo Customer
+CUST_7631,Alexander Nguyen,CUST_7631 - DataCo Customer
+CUST_8018,Ruth Shepherd,CUST_8018 - DataCo Customer
+CUST_9371,Mary Patterson,CUST_9371 - DataCo Customer
+CUST_9494,Robert Gilmore,CUST_9494 - DataCo Customer
+CUST_9737,Benjamin Smith,CUST_9737 - DataCo Customer
+CUST_9883,Michelle Waters,CUST_9883 - DataCo Customer

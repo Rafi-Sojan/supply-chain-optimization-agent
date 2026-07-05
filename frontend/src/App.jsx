@@ -26,29 +26,28 @@ export default function App() {
   const [reorderPlan, setReorderPlan] = useState([]);
   const [suppliers, setSuppliers] = useState([]);
   const [optimization, setOptimization] = useState(null);
+  const [routeNetwork, setRouteNetwork] = useState(null);
   const [scenario, setScenario] = useState(null);
   const [error, setError] = useState("");
 
   useEffect(() => {
     async function loadDashboard() {
-      try {
-        const [summaryData, dataStatusData, forecastData, reorderData, supplierData, optimizationData] = await Promise.all([
-          api.summary(),
-          api.dataStatus(),
-          api.forecast({ horizon_months: 1, method: forecastMethod }),
-          api.reorderPlan(),
-          api.supplierRanking(),
-          api.optimize({ scenario_name: "Base Case" }),
-        ]);
-        setSummary(summaryData);
-        setDataStatus(dataStatusData);
-        setForecasts(forecastData);
-        setReorderPlan(reorderData);
-        setSuppliers(supplierData);
-        setOptimization(optimizationData);
-      } catch (requestError) {
-        setError(requestError.message);
-      }
+      setError("");
+      const requests = [
+        ["summary", api.summary(), setSummary],
+        ["data status", api.dataStatus(), setDataStatus],
+        ["forecast", api.forecast({ horizon_months: 1, method: forecastMethod }), setForecasts],
+        ["inventory", api.reorderPlan(), setReorderPlan],
+        ["suppliers", api.supplierRanking(), setSuppliers],
+        ["optimization", api.optimize({ scenario_name: "Base Case" }), setOptimization],
+        ["route network", api.routeNetwork(), setRouteNetwork],
+      ];
+
+      requests.forEach(([label, promise, setter]) => {
+        promise.then(setter).catch((requestError) => {
+          setError((current) => [current, `${label}: ${requestError.message}`].filter(Boolean).join("; "));
+        });
+      });
     }
 
     loadDashboard();
@@ -67,7 +66,7 @@ export default function App() {
     forecast: <Forecasting forecasts={forecasts} method={forecastMethod} onMethodChange={setForecastMethod} />,
     inventory: <Inventory reorderPlan={reorderPlan} />,
     suppliers: <Suppliers suppliers={suppliers} />,
-    optimization: <Optimization optimization={optimization} />,
+    optimization: <Optimization optimization={optimization} routeNetwork={routeNetwork} />,
     scenarios: <Scenarios scenario={scenario} onRunScenario={runScenario} />,
   };
 

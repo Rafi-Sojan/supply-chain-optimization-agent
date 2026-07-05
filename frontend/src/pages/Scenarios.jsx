@@ -1,5 +1,6 @@
 import { useState } from "react";
 import CostBarChart from "../charts/CostBarChart.jsx";
+import { ChartFrame } from "../charts/Visualizations.jsx";
 
 export default function Scenarios({ scenario, onRunScenario }) {
   const [form, setForm] = useState({
@@ -58,7 +59,31 @@ export default function Scenarios({ scenario, onRunScenario }) {
 
       {scenario ? (
         <div className="scenario-results">
-          <CostBarChart data={costData} />
+          <div className="visual-grid">
+            <ChartFrame title="Scenario Cost Comparison" subtitle="Base plan vs changed assumptions">
+              <CostBarChart data={costData} bare />
+            </ChartFrame>
+            <ChartFrame title="Scenario Impact" subtitle="Cost change and allocation movement">
+              <div className="impact-metrics">
+                <div>
+                  <span>Cost Difference</span>
+                  <strong>Rs. {scenario.cost_difference.toLocaleString()}</strong>
+                </div>
+                <div>
+                  <span>Percentage Change</span>
+                  <strong>{scenario.percentage_change}%</strong>
+                </div>
+                <div>
+                  <span>Changed Allocations</span>
+                  <strong>{scenario.changed_allocation_count}</strong>
+                </div>
+                <div>
+                  <span>Risk</span>
+                  <strong>{scenario.risk_level}</strong>
+                </div>
+              </div>
+            </ChartFrame>
+          </div>
           <div className="result-strip">
             <strong>Change: Rs. {scenario.cost_difference.toLocaleString()}</strong>
             <span>{scenario.percentage_change}%</span>

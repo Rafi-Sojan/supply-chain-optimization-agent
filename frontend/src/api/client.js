@@ -1,4 +1,4 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? "http://localhost:8000";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? "http://127.0.0.1:8000";
 
 async function request(path, options = {}) {
   const response = await fetch(`${API_BASE_URL}${path}`, {
@@ -23,6 +23,7 @@ export const api = {
     request("/forecast/demand", { method: "POST", body: JSON.stringify(payload) }),
   optimize: (payload = { scenario_name: "Base Case" }) =>
     request("/optimize/warehouse-allocation", { method: "POST", body: JSON.stringify(payload) }),
+  routeNetwork: () => request("/routes/network"),
   runScenario: (payload) =>
     request("/scenarios/run", { method: "POST", body: JSON.stringify(payload) }),
 };

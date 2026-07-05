@@ -1,4 +1,5 @@
 import DataTable from "../components/DataTable.jsx";
+import { SupplierCostReliabilityChart, SupplierScoreChart } from "../charts/Visualizations.jsx";
 
 const columns = [
   { key: "supplier_name", label: "Supplier" },
@@ -16,6 +17,10 @@ export default function Suppliers({ suppliers }) {
       <div className="module-header">
         <h2>Supplier Ranking</h2>
         <p>Weighted scoring across cost, reliability, lead time, capacity, quality, and delay risk.</p>
+      </div>
+      <div className="visual-grid">
+        <SupplierScoreChart suppliers={suppliers} />
+        <SupplierCostReliabilityChart suppliers={suppliers} />
       </div>
       <DataTable rows={suppliers} columns={columns} />
     </section>

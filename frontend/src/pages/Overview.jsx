@@ -1,4 +1,5 @@
 import MetricCard from "../components/MetricCard.jsx";
+import { DatasetRowsChart } from "../charts/Visualizations.jsx";
 
 export default function Overview({ summary, dataStatus }) {
   if (!summary) return <div className="empty-state">Loading dashboard summary...</div>;
@@ -25,6 +26,7 @@ export default function Overview({ summary, dataStatus }) {
         ) : null}
         {dataStatus?.errors?.length ? <p>Data issue: {dataStatus.errors.join("; ")}</p> : null}
       </section>
+      <DatasetRowsChart dataStatus={dataStatus} />
     </div>
   );
 }

@@ -244,6 +244,7 @@ def validate_dataset(dataset: dict[str, list[dict[str, Any]]]) -> list[str]:
         "road_nodes": ("latitude", "longitude"),
         "road_edges": ("distance_km", "cost_per_km"),
     }
+    signed_numeric_columns = {("road_nodes", "latitude"), ("road_nodes", "longitude")}
     for table_name, columns in numeric_checks.items():
         if table_name in OPTIONAL_DATASET_FILES and not dataset.get(table_name):
             continue
@@ -251,7 +252,7 @@ def validate_dataset(dataset: dict[str, list[dict[str, Any]]]) -> list[str]:
             for column in columns:
                 if not isinstance(row[column], int | float):
                     errors.append(f"{table_name} row {index} column {column} must be numeric")
-                elif row[column] < 0:
+                elif (table_name, column) not in signed_numeric_columns and row[column] < 0:
                     errors.append(f"{table_name} row {index} column {column} cannot be negative")
 
     return errors

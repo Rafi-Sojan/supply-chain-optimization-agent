@@ -1,0 +1,23 @@
+{
+  "source": "Kaggle DataCo SMART Supply Chain",
+  "kaggle_dataset": "shashwatwork/dataco-smart-supply-chain-for-big-data-analysis",
+  "notes": [
+    "Derived from real transaction rows in DataCoSupplyChainDataset.csv.",
+    "Importer keeps top 12 products and top 40 customers for app performance.",
+    "Warehouses, inventory, shipping lanes, and route edges are derived from market, customer, order, and coordinate fields."
+  ],
+  "source_rows": 180519,
+  "filtered_rows": 1398,
+  "latest_demand_period": "2017-10-01",
+  "row_counts": {
+    "products": 12,
+    "suppliers": 12,
+    "warehouses": 5,
+    "customers": 40,
+    "inventory": 60,
+    "demand_history": 1131,
+    "shipping_costs": 2400,
+    "road_nodes": 45,
+    "road_edges": 200
+  }
+}

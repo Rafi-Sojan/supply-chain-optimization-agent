@@ -1,4 +1,5 @@
 import DataTable from "../components/DataTable.jsx";
+import { ForecastChart, ForecastRiskChart } from "../charts/Visualizations.jsx";
 
 const methods = [
   { id: "linear_trend", label: "Trend" },
@@ -37,6 +38,10 @@ export default function Forecasting({ forecasts, method, onMethodChange }) {
             {item.label}
           </button>
         ))}
+      </div>
+      <div className="visual-grid">
+        <ForecastChart forecasts={forecasts} />
+        <ForecastRiskChart forecasts={forecasts} />
       </div>
       <DataTable rows={forecasts} columns={columns} />
     </section>

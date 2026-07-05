@@ -84,7 +84,8 @@ using Dijkstra or A* and use route-derived costs for allocation.
 
 - IDs must match across files.
 - `demand_history.region` must exist in `customers.region`.
-- Numeric columns must be numeric and non-negative.
+- Numeric columns must be numeric. Business quantities, costs, lead times, distances, and scores must be non-negative.
+- Road node latitude and longitude may be negative because they are real geographic coordinates.
 - `period` should use `YYYY-MM-DD` format.
 - Shipping costs should include enough warehouse-customer-product lanes for the optimizer to satisfy demand.
 - Road edge distances and costs must be non-negative.

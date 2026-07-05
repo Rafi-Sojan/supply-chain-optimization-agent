@@ -172,6 +172,7 @@ data/
   raw/
   sample_*.csv
 scripts/
+  import_dataco_supply_chain.py
   import_pulp_beer_distribution.py
   start-dev.js
 docker-compose.yml
@@ -275,4 +276,10 @@ Regenerate the included feasible benchmark:
 
 ```bash
 .\backend\.venv-win\Scripts\python.exe scripts\import_pulp_beer_distribution.py
+```
+
+Import the Kaggle DataCo SMART Supply Chain dataset:
+
+```bash
+.\backend\.venv-win\Scripts\python.exe scripts\import_dataco_supply_chain.py
 ```

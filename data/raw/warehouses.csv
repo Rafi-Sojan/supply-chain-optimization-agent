@@ -1,3 +1,6 @@
 warehouse_id,warehouse_name,region,storage_capacity
-A,Warehouse A,Brewery North,1000
-B,Warehouse B,Brewery South,4000
+WH_AFRICA,Africa Distribution Hub,Africa,1000
+WH_EUROPE,Europe Distribution Hub,Europe,1395
+WH_LATAM,LATAM Distribution Hub,LATAM,1488
+WH_PACIFIC_ASIA,Pacific Asia Distribution Hub,Pacific Asia,1000
+WH_USCA,USCA Distribution Hub,USCA,1000

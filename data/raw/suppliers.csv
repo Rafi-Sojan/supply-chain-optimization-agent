@@ -1,2 +1,13 @@
 supplier_id,supplier_name,product_id,unit_cost,lead_time_days,reliability_score,capacity,quality_score,past_delay_rate
-BREWERY_SUPPLIER,Boutique Brewery,BEER_CRATE,11,2,96,5000,98,2
+SUP_PROD_1004,DataCo Supplier - Fishing,PROD_1004,247.99,3,45.8,184,90,54.2
+SUP_PROD_1014,DataCo Supplier - Indoor/Outdoor Games,PROD_1014,30.99,3,47.1,930,90,52.9
+SUP_PROD_1073,DataCo Supplier - Water Sports,PROD_1073,123.99,3,45.2,146,90,54.8
+SUP_PROD_116,DataCo Supplier - Tennis & Racquet,PROD_116,27.89,3,16.7,100,90,83.3
+SUP_PROD_191,DataCo Supplier - Cardio Equipment,PROD_191,61.99,3,42.1,509,90,57.9
+SUP_PROD_365,DataCo Supplier - Cleats,PROD_365,37.19,3,43.2,1071,90,56.8
+SUP_PROD_403,DataCo Supplier - Men's Footwear,PROD_403,80.59,3,41.8,258,90,58.2
+SUP_PROD_502,DataCo Supplier - Women's Apparel,PROD_502,31.0,3,42.7,1004,90,57.3
+SUP_PROD_565,DataCo Supplier - Girls' Apparel,PROD_565,43.4,3,66.7,100,90,33.3
+SUP_PROD_627,DataCo Supplier - Shop By Sport,PROD_627,24.79,3,46.7,374,90,53.3
+SUP_PROD_957,DataCo Supplier - Camping & Hiking,PROD_957,185.99,3,48.6,153,90,51.4
+SUP_PROD_977,DataCo Supplier - Hunting & Shooting,PROD_977,18.59,3,50.0,100,90,50.0

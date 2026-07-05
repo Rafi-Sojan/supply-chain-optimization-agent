@@ -1,4 +1,5 @@
 import DataTable from "../components/DataTable.jsx";
+import { InventoryChart, InventoryRiskChart } from "../charts/Visualizations.jsx";
 
 const columns = [
   { key: "warehouse_id", label: "Warehouse" },
@@ -16,6 +17,10 @@ export default function Inventory({ reorderPlan }) {
       <div className="module-header">
         <h2>Inventory Reorder Planning</h2>
         <p>Safety stock and reorder point recommendations using demand volatility and lead time.</p>
+      </div>
+      <div className="visual-grid">
+        <InventoryChart reorderPlan={reorderPlan} />
+        <InventoryRiskChart reorderPlan={reorderPlan} />
       </div>
       <DataTable rows={reorderPlan} columns={columns} />
     </section>
